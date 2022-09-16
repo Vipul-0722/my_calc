@@ -1,19 +1,10 @@
 import React,{ useState } from 'react';
 import './App.css'
 
-const nums = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-const ops = [ '/', '*', '-', '+'];
-const ids = {
-  7: 'seven', 
-  8: 'eight', 
-  9: 'nine', 
-  4: 'four', 
-  5: 'five', 
-  6: 'six', 
-  1: 'one', 
-  2: 'two', 
-  3: 'three', 
-  0: 'zero',
+const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
+const operations = [ '/', '*', '-', '+'];
+const ids = {   0: 'zero',   1: 'one',  2: 'two',  3: 'three',  4: 'four',   5: 'five',  6: 'six', 7: 'seven',   8: 'eight',  9: 'nine', 
+
   '/': 'divide', 
   '*': 'multiply', 
   '-': 'subtract', 
@@ -52,11 +43,11 @@ const App = () => {
       default: {
         let e = undefined;
 
-        if(ops.includes(innerText)) {
-          if(ops.includes(lastPressed) && innerText !== '-') {
+        if(operations.includes(innerText)) {
+          if(operations.includes(lastPressed) && innerText !== '-') {
       
             const lastNumberIdx = calc.split('').reverse()
-            .findIndex(char => char !== ' ' && nums.includes(+char)); 
+            .findIndex(char => char !== ' ' && numbers.includes(+char)); 
             e = calc.slice(0, calc.length - lastNumberIdx) + ` ${innerText} `;
           } else {
             e = `${calc} ${innerText} `;
@@ -92,7 +83,7 @@ const App = () => {
           AC
         </button>
 
-        {nums.map(num => (
+        {numbers.map(num => (
           <button
             className={`dark-grey ${num === 0 && 'big-h'}`}
             key={num}
@@ -111,8 +102,8 @@ const App = () => {
           .
         </button>
       </div>
-      <div className="ops-container">
-        {ops.map(op =>(
+      <div className="operation-container">
+        {operations.map(op =>(
           <button 
             className="orange"
             key={op}
